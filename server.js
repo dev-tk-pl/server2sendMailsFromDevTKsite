@@ -6,7 +6,10 @@ const port = process.env.PORT || 3000;
 
 /** Decode Form URL Encoded data */
 app.use(function (req, res, next) {
-  res.set("Content-Security-Policy", "default-src 'self'");
+  res.setHeader(
+    'Content-Security-Policy',
+    "default-src 'self'; font-src 'self'; img-src 'self'; script-src 'self'; style-src 'self'; frame-src 'self'"
+  );
   next();
 });
 app.use(cors());
