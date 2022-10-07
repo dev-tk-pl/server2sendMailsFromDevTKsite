@@ -25,8 +25,8 @@ function wyslijMaila(textFromForm) {
     secure: false,
     port: 25,
     auth: {
-      user: 'dev.tk.frontend@gmail.com',
-      pass: 'yyjysfgqywqvkubb'
+      user: process.env.MAIL,
+      pass: process.env.PASS
     },
     tls: {
       rejectUnauthorized: false
@@ -35,7 +35,7 @@ function wyslijMaila(textFromForm) {
 
   let helperOption = {
     from: 'stefan',
-    to: "dev.tk.frontend@gmail.com",
+    to: process.env.MAIL,
     subject: `tytuł wiadomośći od ${formData.name}`,
     text: `Wiadomość od: ${formData.name} \nTreść wiadomości: ${formData.message} \n \nMail: ${formData.email}`
   }
@@ -50,7 +50,6 @@ function wyslijMaila(textFromForm) {
 }
 
 // nodemailer - end
-
 
 /** Process POST request */
 app.post('/api', function (req, res, next) {
