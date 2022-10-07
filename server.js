@@ -6,10 +6,7 @@ const port = process.env.PORT || 3000;
 
 /** Decode Form URL Encoded data */
 app.use(function (req, res, next) {
-  res.setHeader(
-    'Content-Security-Policy',
-    "default-src 'self'; font-src 'self'; img-src 'self'; script-src 'self'; style-src 'self'; frame-src 'self'"
-  );
+  res.set("Content-Security-Policy", "default-src 'self'");
   next();
 });
 app.use(cors());
@@ -36,7 +33,7 @@ function wyslijMaila(textFromForm) {
   let helperOption = {
     from: 'stefan',
     to: process.env.MAIL,
-    subject: `tytuł wiadomośći od ${formData.name}`,
+    subject: `Wiadomośći od ${formData.name}`,
     text: `Wiadomość od: ${formData.name} \nTreść wiadomości: ${formData.message} \n \nMail: ${formData.email}`
   }
 
